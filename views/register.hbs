@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coursera/Signup</title>
+    {{!-- <link href="./styles/navbar.css" rel="stylesheet" />
+    <link href="./styles/footer.css" rel="stylesheet" /> --}}
+
+    <style>
+        #footer {
+            margin-top: 5%;
+            background-color: #eeeeee;
+        }
+
+        body {
+            background-color: #EBF3FE;
+        }
+
+        .sign-up {
+            padding: 20px 20px;
+        }
+
+        .center {
+            margin: auto;
+            width: 30%;
+            background-color: #fff;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .sign-up-details {
+            text-align: center;
+        }
+
+        .sign-up-details h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 34px;
+            margin-bottom: 0px;
+        }
+
+        .sign-up-details p {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .sign-up-form {
+            margin-top: 40px;
+        }
+
+        label {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            color: rgb(31, 31, 31);
+            font-size: 12px;
+            line-height: 18px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .form {
+            padding-right: 20px;
+        }
+
+        .form span,
+        .form-1 p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            color: #929191;
+        }
+
+        .form-control {
+            font-family: 'Open Sans', sans-serif;
+            border-radius: 0px;
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            padding: 0.75rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #CED4DA;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .join-free-btn {
+            display: block;
+            width: 107%;
+            margin-top: 20px;
+            font-family: 'Open Sans', sans-serif;
+            background: rgb(0, 86, 210);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 24px;
+            text-align: center;
+            transition: background-color 250ms ease-out 0s, box-shadow 250ms ease-out 0s, color 250ms ease-out 0s;
+            color: rgb(255, 255, 255);
+            padding: 12px 32px;
+            cursor: pointer;
+        }
+
+        .join-free-btn:hover {
+            background-color: rgb(24, 89, 169);
+        }
+
+        .form-1 p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .join-free-btn-1 {
+            background: transparent;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 24px;
+            text-align: center;
+            transition: background-color 250ms ease-out 0s, box-shadow 250ms ease-out 0s, color 250ms ease-out 0s;
+            padding: 12px 16px;
+            border: 1px solid rgb(31, 31, 31);
+            color: rgb(31, 31, 31);
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .join-free-btn-1:hover {
+            background-color: rgb(243, 248, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <div class="sign-up">
+        <div class="container">
+            <div class="center">
+                <div class="sign-up-details">
+                    <h2>Sign up</h2>
+                    <p>Learn on your own time from top<br>universities and businesses.</p>
+                </div>
+                <form action="/register" method="POST">
+                <div class="sign-up-form">
+                    <div class="form">
+                        <label>Full Name</label>
+                        <input id="name" type="text" name="name" class="form-control"
+                            placeholder="Enter your full name">
+                        <label>Email</label>
+                        <input id="email" type="email" name="email" class="form-control" placeholder="name@email.com">
+                        <label>Password</label>
+                        <input id="pass" type="password" name="password" class="form-control" placeholder="Create password">
+                        <span>Between 8 and 72 characters</span>
+                        <button type="submit" class="join-free-btn">Join For Free</button>
+                    </div>
+                    <div class="form-1">
+                        <p>or</p>
+                        <button type="button" class="join-free-btn-1">Continue with Google</button>
+                        <button type="button" class="join-free-btn-1">Continue with Facebook</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div id="foot"></div>
+</body>
+
+</html>
+<script type="module">
+   /* import navbar from "./components/navbar.js"
+    console.log(navbar);
+    let main = document.getElementById('main');
+    main.innerHTML = navbar();*/
+    document.querySelector("button").addEventListener("click", signUp);
+    var userArr = JSON.parse(localStorage.getItem("userData")) || [];
+    function signUp() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("pass").value;
+        var userCred = {
+            fullName: name,
+            emailId: email,
+            password: pass,
+        };
+        alert("Signup Successful")
+        userArr.push(userCred);
+        localStorage.setItem("userData", JSON.stringify(userArr));
+        window.location.href = "login";
+    }
+
+   /* import footer from "./components/footer.js"
+    console.log(footer);
+
+    let foot = document.getElementById('foot');
+    foot.innerHTML = footer();*/
+</script>
