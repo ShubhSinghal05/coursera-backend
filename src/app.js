@@ -14,7 +14,7 @@ app.use(express.static(static_path))
 app.set("view engine","hbs");
 
 
-app.get("/register",(req,res)=>{
+app.get("/",(req,res)=>{
     res.render("register")
 })
 
@@ -37,7 +37,7 @@ app.post("/register", async(req,res)=>{
         res.status(400).send(error.message);
     }
 })
-app.get("/",(req,res)=>{
+app.get("/home_page",(req,res)=>{
     res.render("home_page")
 })
 
