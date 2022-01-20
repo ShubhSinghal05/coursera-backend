@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/app -e js,hbs"
+    
+    "start": "nodemon src/app -e js,hbs"
   },
   "keywords": [],
   "author": "",
