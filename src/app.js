@@ -17,6 +17,9 @@ app.set("view engine","hbs");
 app.get("/",(req,res)=>{
     res.render("register")
 })
+app.get("/register",(req,res)=>{
+    res.render("register")
+})
 
 app.get("/login",(req,res)=>{
     res.render("login")
@@ -30,7 +33,7 @@ app.post("/register", async(req,res)=>{
            email:req.body.email,
            password:req.body.password
        })
-
+console.log(mainData)
        const registered= await mainData.save();
        res.status(200).render("login")
     } catch (error) {
