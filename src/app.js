@@ -17,9 +17,9 @@ app.set("view engine","hbs");
 app.get("/",(req,res)=>{
     res.render("register")
 })
-app.get("/register",(req,res)=>{
-    res.render("register")
-})
+// app.get("/register",(req,res)=>{
+//     res.render("register")
+// })
 
 app.get("/login",(req,res)=>{
     res.render("login")
