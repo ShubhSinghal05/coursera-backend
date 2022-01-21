@@ -53,7 +53,8 @@
     //     console.log(data)
 
     window.onload = function(){
-        fetch(`http://localhost:5550/data`)
+        fetch(`https://courseraclone-backend.herokuapp.com/data
+`)
         .then(res => {
             res.json().then(res => {
                 console.log(res)
