@@ -33,7 +33,12 @@ app.get("/online_degrees",(req,res)=>{
 })
 
 app.get("/find_careers",(req,res)=>{
-    res.render("find_careers")
+    try {
+        res.render("find_careers")
+        
+    } catch (error) {
+        res.send(error.message)
+    }
 })
 
 app.get("/home_page",(req,res)=>{
