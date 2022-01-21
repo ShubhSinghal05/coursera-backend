@@ -29,6 +29,12 @@ app.get("/register",(req,res)=>{
 app.get("/login",(req,res)=>{
     res.render("login")
 })
+app.get("/show_careers",(req,res)=>{
+    res.render("show_careers")
+})
+app.get("/payment",(req,res)=>{
+    res.render("payment")
+})
 
 app.get("/online_degrees",(req,res)=>{
     res.render("online_degrees")
