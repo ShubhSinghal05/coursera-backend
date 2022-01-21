@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #explore-bar {
+            display: flex;
+            margin: 20px;
+            justify-content: space-between;
+        }
+
+        #explore-bar button {
+            font-size: large;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="explore-bar">
+        <button id="overview">Overview</button>
+        <button id="admin">Admissions</button>
+        <button id="prog">Programme</button>
+        <button id="tuition">Tuition & Financing</button>
+        <button id="exp">Student Experience</button>
+        <button id="career">Careers</button>
+        <button id="about">About the University</button>
+    </div>
+    <hr />
+
+    <div id="display"></div>
+</body>
+
+</html>
+<script>
+
+    let display = document.getElementById('display');
+
+    let overview = document.getElementById('overview');
+    overview.addEventListener('click', function () {
+
+        display.innerHTML = null;
+        let h1 = document.createElement('h1');
+        h1.innerText = "Launch your marketing career by earning your Bachelor of Science in Marketing from a top 25 UK university."
+        display.append(h1)
+    })
+
+    let admin = document.getElementById('admin');
+    admin.addEventListener('click', function () {
+
+        display.innerHTML = null;
+        let h1 = document.createElement('h1');
+        h1.innerText = "Who is this degree for:"
+
+        display.append(h1)
+    })
+
+</script>

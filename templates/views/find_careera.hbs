@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/find_career.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/degrees.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    #footer {
+        margin-top: 86%;
+        background-color: #eeeeee;
+    }
+</style>
+
+<body>
+    <div id="nav">
+        {{>navbar}}
+    </div>
+    <div id="main"></div>
+    <div id="foot">
+        {{>footer}}
+    </div>
+</body>
+
+</html>
+
+<script type="module">
+
+    //import navbar from "./components/navbar.js"
+    //console.log(navbar);
+
+    //let nav = document.getElementById('nav');
+    //nav.innerHTML = navbar();
+
+    let logo = document.getElementById('logo');
+    logo.addEventListener('click', function () {
+        window.location.href = "home_page"
+    });
+
+    // let url = `https://api.coursera.org/api/courses.v1?fields=description,photoUrl`
+    // async function show() {
+    //     let main = document.getElementById("main")
+    //     let res = await fetch(url);
+    //     let data = await res.json();
+    //     console.log(data)
+
+    window.onload = function(){
+        fetch(`http://localhost:3000/careers`)
+        .then(res => {
+            res.json().then(res => {
+                console.log(res)
+                show(res)
+            })
+        })
+    }       
+
+        function show(res){
+        res.map(function (item) {
+            let div = document.createElement("div");
+            div.setAttribute("id", "datadiv")
+
+            let h1 = document.createElement("h1");
+            h1.innerText = item.name;
+            h1.style.marginLeft = "6.5%"
+            h1.style.textOverflow = "ellipsis";
+
+            let img = document.createElement("img");
+            img.src = item.photoUrl;
+            img.setAttribute('id', "khush")
+
+            let btn = document.createElement("button");
+            btn.textContent = "BUY COURSE";
+            btn.setAttribute("id", "btn");
+            btn.style.backgroundColor = "#1E88E5"
+
+            let div_info = document.createElement("div");
+            div_info.setAttribute("id", "divId")
+
+            let info = document.createElement("p");
+            info.innerText = "For more details click →"
+            info.setAttribute("id", "info");
+            info.style.color = "#0056d2"
+            info.style.fontSize = "25px";
+            info.style.textDecoration = "underline"
+
+            // let rate = document.createElement('p');
+            // rate.innerText = Math.floor(Math.random() * 7000);
+
+
+            div.append(h1, img);
+            // div.style.border = "1px solid #424242"
+
+            div_info.append(div, info, btn)
+            div_info.style.border = "1px solid lightgrey"
+
+            main.append(div_info);
+
+            div_info.onclick = () => {
+                //console.log(item);
+                item = { ...item, price: Math.floor(Math.random() * 3000) }
+                console.log(Math.floor(Math.random() * 3000));
+                localStorage.setItem("career_data", JSON.stringify(item));
+                window.location.href = 'show_careers';
+            };
+        })
+    }
+    let btn = document.getElementById('icon').addEventListener('click', function () {
+        window.location.href = "find_careers";
+    });
+
+    //import footer from "./components/footer.js"
+    //console.log(footer);
+
+    //let foot = document.getElementById('foot');
+    //foot.innerHTML = footer();
+</script>

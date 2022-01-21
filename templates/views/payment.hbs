@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initail-scale= 1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">   
+    <title>Payment Details</title>
+    <link href="./styles/navbar.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .payment {
+            padding: 50px 100px;
+        }
+
+        .center {
+            margin: auto;
+            width: 70%;
+            background-color: #fff;
+            padding: 50px;
+        }
+
+        .payment-details h2 {
+            font-family: "Source Sans 3", sans-serif;
+            font-weight: 300;
+            font-size: 32px;
+        }
+
+        .payment-form {
+            margin-top: 30px;
+        }
+
+        .payment-form p {
+            font-family: "Source Sans 3", sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .green-text {
+            color: #1f8354;
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .column-1 {
+            width: 20%;
+        }
+
+        .column-2 {
+            width: 80%;
+        }
+
+        .form-control,
+        .form-control-1,
+        .form-control-2,
+        .form-control-3 {
+            border-radius: 0px;
+            width: 70%;
+            font-family: "Source Sans 3", sans-serif;
+            border-radius: 0px;
+            margin-top: 9px;
+            display: block;
+            padding: 0.70rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .form-control-1 {
+            width: 25%
+        }
+
+        .form-control-2 {
+            width: 15%
+        }
+
+        .form-control-3 {
+            width: 73%
+        }
+
+        #save-btn {
+            display: block;
+            width: 50%;
+            margin-top: 48px;
+            font-family: "Source Sans 3", sans-serif;
+            background: rgb(0, 86, 210);
+            border: none;
+            margin-left: 23%;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 24px;
+            text-align: center;
+            transition: background-color 250ms ease-out 0s, box-shadow 250ms ease-out 0s, color 250ms ease-out 0s;
+            color: rgb(255, 255, 255);
+            padding: 12px 32px;
+            cursor: pointer;
+        }
+
+        #total {
+            font-family: "Source Sans 3", sans-serif;
+            color: #1f8354;
+            font-weight: bold;
+        }
+        .h2explore{
+            margin-top: -10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <div class="payment">
+        <div class="container">
+            <div class="center">
+                <div class="payment-details">
+                    <h2 id="total"></h2>
+                    <h2>Payment</h2>
+                </div>
+                <div class="payment-form">
+                    <div class="row">
+                        <div class="column-1">
+                            <p class="green-text">Name on card</p>
+                        </div>
+                        <div class="column-2">
+                            <input type="text" name="username" class="form-control" placeholder="Enter your name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column-1">
+                            <p>Card Number</p>
+                        </div>
+                        <div class="column-2">
+                            <input type="text" name="cardnumber" class="form-control"
+                                placeholder="Enter your card number">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column-1">
+                            <p>Expiration Date</p>
+                        </div>
+                        <div class="column-2">
+                            <input type="text" name="date" class="form-control-1" placeholder="MM / YY">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column-1">
+                            <p>CVV</p>
+                        </div>
+                        <div class="column-2">
+                            <input type="text" name="cvv" class="form-control-2" placeholder="CVV">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column-1">
+                            <p>Country</p>
+                        </div>
+                        <div class="column-2">
+                            <select class="form-control-3">
+                                <option>Select Your Country</option>
+                                <option>India</option>
+                                <option>USA</option>
+                                <option>Russia</option>
+                                <option>China</option>
+                                <option>UK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="save-btn">Pay Now</button>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js"
+    console.log(navbar);
+
+    let main = document.getElementById('main');
+    main.innerHTML = navbar();
+
+    let logo = document.getElementById('logo');
+    logo.addEventListener('click', function () {
+        window.location.href = "home_page.html"
+    });
+
+    let career_data = JSON.parse(localStorage.getItem("career_data"));
+    console.log(career_data);
+    let total = document.getElementById('total');
+    total.innerText = "Total Amount to be paid: " + career_data.price;
+
+    let btn = document.getElementById("save-btn")
+    btn.addEventListener("click", function () {
+        alert("Payment Successful")
+        window.location.href = "home_page.html";
+    });
+
+
+</script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/footer.css" rel="stylesheet" />
+
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet">
+    <link href="./styles/show_careers.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    #footer {
+        /* margin-top: 1170%; */
+        background-color: #eeeeee;
+    }
+</style>
+
+<body>
+    <div id="nav">
+        {{>navbar}}
+    </div>
+    <div id="career_details"></div>
+    <div id="foot">
+        {{>footer}}
+    </div>
+</body>
+
+
+</html>
+<script type="module">
+    //import navbar from "./components/navbar.js"
+    //console.log(navbar);
+
+    //let nav = document.getElementById('nav');
+    //nav.innerHTML = navbar();
+
+    let logo = document.getElementById('logo');
+    logo.addEventListener('click', function () {
+        window.location.href = "home_page"
+    })
+
+    let career_data = JSON.parse(localStorage.getItem("career_data"));
+    console.log(career_data);
+
+    let career_details = document.getElementById('career_details');
+
+    let div = document.createElement("div");
+
+    let h1 = document.createElement("h1");
+    h1.innerText = career_data.name;
+    h1.setAttribute('id', 'heading')
+
+    let img = document.createElement("img");
+    img.src = career_data.photoUrl;
+    img.setAttribute('id', 'pic')
+
+    let p = document.createElement("p");
+    p.innerText = career_data.description;
+    p.setAttribute('id', 'details')
+
+    let rate = document.createElement('h3');
+    rate.setAttribute("id", "amount")
+    rate.innerText = "Course Value ₹ " + career_data.price + " " + "INR";
+
+    let btn = document.createElement("button");
+    btn.textContent = "BUY COURSE";
+    btn.setAttribute("id", "btn");
+    btn.style.backgroundColor = "#1E88E5";
+    btn.addEventListener('click', function () {
+        window.location.href = "payment.html"
+    });
+
+    div.append(h1, img, rate, p, btn);
+
+    career_details.append(div)
+    localStorage.getItem("price", JSON.stringify(Number(rate)));
+
+    //import footer from "./components/footer.js"
+    //console.log(footer);
+
+    //let foot = document.getElementById('foot');
+    //foot.innerHTML = footer();
+
+</script>

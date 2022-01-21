@@ -1,0 +1,50 @@
+#heading {
+    text-align: center;
+    margin-top: 3%;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  #pic {
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 5.4%;
+    border: 1px solid #424242;
+    border-radius: 10px;
+    box-shadow: 52px -22px #e0e0e0;
+    margin-bottom: 4%;
+  }
+  
+  #details {
+    width: 60%;
+    margin-top: 2.5%;
+    margin-left: 20%;
+    font-family: "Readex Pro", sans-serif, Impact, Haettenschweiler,
+      "Arial Narrow Bold", sans-serif;
+    font-size: larger;
+  }
+  
+  #amount {
+    width: 60%;
+    margin-left: 40%;
+    font-family: "Readex Pro", sans-serif, Impact, Haettenschweiler,
+      "Arial Narrow Bold", sans-serif;
+    font-size: larger;
+    color: red;
+  }
+  
+  #btn {
+    width: 40%;
+    border: none;
+    border-radius: 8px;
+    margin-left: 31%;
+    justify-self: center;
+    height: 40px;
+    margin-top: 5%;
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10%;
+  }
+  
