@@ -1,3 +1,3 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/coursera")
+mongoose.connect("mongodb+srv://shubh:Shubham@cluster0.87lcx.mongodb.net/test")
