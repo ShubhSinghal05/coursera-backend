@@ -1,9 +1,11 @@
 const express= require("express");
 const app=express();
 const path= require("path")
+const mongoose= require("mongoose");
 require("./db/conn")
 const port= process.env.PORT || 5550;
 const hbs= require("hbs");
+const Data= require("./models/data");
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 const Register = require("./models/registers");
@@ -43,6 +45,15 @@ app.get("/find_careers",(req,res)=>{
 
 app.get("/home_page",(req,res)=>{
     res.render("home_page")
+})
+app.get("/data",async (req,res)=>{
+    try{
+        let courses= await Data.find().lean().exec();
+        res.status(200).send(courses);
+
+    }catch (error) {
+        res.status(500).json(error.message)
+    }
 })
 
 
