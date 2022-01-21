@@ -101,6 +101,9 @@ nav {
 .menu li:hover > .submenu {
   display: block;
 }
+#last_change{
+    width:100%
+}
 
 .submenu li:hover > .submenu2 {
   display: block;
